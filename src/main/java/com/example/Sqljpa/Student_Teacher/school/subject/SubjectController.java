@@ -8,6 +8,7 @@ import com.example.Sqljpa.Student_Teacher.school.teacher.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -23,9 +24,12 @@ public class SubjectController {
     @Autowired
     TeacherRepository teacherRepository;
 
+    @Autowired
+    SubjectService subjectService;
+
     @GetMapping
     List<Subject> getSubjects() {
-        return subjectRepository.findAll();
+        return this.subjectService.findAll();
     }
 
     @PostMapping
@@ -38,8 +42,8 @@ public class SubjectController {
             @PathVariable Long subjectId,
             @PathVariable Long studentId
     ) {
-        Subject subject = subjectRepository.findById(subjectId).get();
-        Student student = studentRepository.findById(studentId).get();
+        Subject subject = subjectRepository.findById(subjectId).orElseThrow(() -> new IllegalArgumentException("Subject not found"));
+        Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalArgumentException("Student not found"));
         subject.enrolledStudents.add(student);
         return subjectRepository.save(subject);
     }

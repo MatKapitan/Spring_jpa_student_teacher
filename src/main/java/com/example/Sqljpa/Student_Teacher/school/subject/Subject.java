@@ -3,6 +3,7 @@ package com.example.Sqljpa.Student_Teacher.school.subject;
 
 import com.example.Sqljpa.Student_Teacher.school.student.Student;
 import com.example.Sqljpa.Student_Teacher.school.teacher.Teacher;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -17,6 +18,7 @@ public class Subject {
 
     private String name;
 
+//    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "student_enrolled",
@@ -52,5 +54,4 @@ public class Subject {
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
-
 }
