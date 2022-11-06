@@ -10,17 +10,16 @@ import java.util.List;
 @RequestMapping("/teachers")
 public class TeacherController {
 
-
     @Autowired
     TeacherRepository teacherRepository;
 
     @GetMapping
-    List<Teacher> getTeacher(){
+    List<Teacher> getTeachers() {
         return teacherRepository.findAll();
     }
 
     @PostMapping
-    Teacher createTeacher(@RequestBody Teacher teacher){
+    Teacher createTeacher(@RequestBody Teacher teacher) {
         return teacherRepository.save(teacher);
     }
 }

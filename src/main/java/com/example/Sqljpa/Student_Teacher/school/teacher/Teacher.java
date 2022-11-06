@@ -12,7 +12,7 @@ public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @JsonIgnore
     @OneToMany(mappedBy = "teacher")
@@ -20,7 +20,7 @@ public class Teacher {
 
     private String name;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -33,6 +33,6 @@ public class Teacher {
     }
 
     public Set<Subject> getSubjects() {
-        return subjects;
+        return this.subjects;
     }
 }

@@ -15,12 +15,12 @@ public class StudentController {
     StudentRepository studentRepository;
 
     @GetMapping
-    List<Student> getStudents(){
+    List<Student> getStudents() {
         return studentRepository.findAll();
     }
 
     @PostMapping
-    Student createStudent(@RequestBody Student student){
+    Student createStudent(@RequestBody Student student) {
         return studentRepository.save(student);
     }
 }

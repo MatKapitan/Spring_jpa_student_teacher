@@ -14,23 +14,23 @@ import java.util.List;
 @RequestMapping("/subjects")
 public class SubjectController {
 
-     @Autowired
+    @Autowired
     SubjectRepository subjectRepository;
 
-     @Autowired
+    @Autowired
     StudentRepository studentRepository;
 
-     @Autowired
+    @Autowired
     TeacherRepository teacherRepository;
 
-     @GetMapping
-    List<Subject>getSubjects(){
-         return subjectRepository.findAll();
-     }
+    @GetMapping
+    List<Subject> getSubjects() {
+        return subjectRepository.findAll();
+    }
 
     @PostMapping
-    Subject createSubject(@RequestBody Subject subject){
-         return subjectRepository.save(subject);
+    Subject createSubject(@RequestBody Subject subject) {
+        return subjectRepository.save(subject);
     }
 
     @PutMapping("/{subjectId}/students/{studentId}")
@@ -45,15 +45,13 @@ public class SubjectController {
     }
 
     @PutMapping("/{subjectId}/teacher/{teacherId}")
-    Subject assingnTeacherToSubject(
+    Subject assignTeacherToSubject(
             @PathVariable Long subjectId,
             @PathVariable Long teacherId
-    ){
-         Subject subject = subjectRepository.findById(subjectId).get();
+    ) {
+        Subject subject = subjectRepository.findById(subjectId).get();
         Teacher teacher = teacherRepository.findById(teacherId).get();
         subject.setTeacher(teacher);
         return subjectRepository.save(subject);
-
     }
-
 }

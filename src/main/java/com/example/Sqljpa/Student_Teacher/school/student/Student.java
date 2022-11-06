@@ -12,8 +12,8 @@ import java.util.Set;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY )
-    long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     private String name;
 
@@ -21,18 +21,17 @@ public class Student {
     @ManyToMany(mappedBy = "enrolledStudents")
     private Set<Subject> subjects = new HashSet<>();
 
-    public String getName() {
-        return name;
+    public Long getId() {
+        return id;
     }
 
-    public long getId() {
-        return id;
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
-
 
     public Set<Subject> getSubjects() {
         return subjects;

@@ -13,7 +13,7 @@ public class Subject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    long id;
+    Long id;
 
     private String name;
 
@@ -29,12 +29,16 @@ public class Subject {
     @JoinColumn(name = "teacher_id", referencedColumnName = "id")
     private Teacher teacher;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Set<Student> getEnrolledStudents() {
@@ -45,11 +49,8 @@ public class Subject {
         return teacher;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
     }
+
 }
