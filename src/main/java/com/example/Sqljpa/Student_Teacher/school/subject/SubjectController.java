@@ -58,4 +58,5 @@ public class SubjectController {
         subject.setTeacher(teacher);
         return subjectRepository.save(subject);
     }
+
 }
