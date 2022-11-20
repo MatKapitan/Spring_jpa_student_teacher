@@ -2,6 +2,7 @@ package com.example.Sqljpa.Student_Teacher.school.subject;
 
 
 import com.example.Sqljpa.Student_Teacher.school.student.Student;
+import com.example.Sqljpa.Student_Teacher.school.student.StudentDto;
 import com.example.Sqljpa.Student_Teacher.school.student.StudentRepository;
 import com.example.Sqljpa.Student_Teacher.school.teacher.Teacher;
 import com.example.Sqljpa.Student_Teacher.school.teacher.TeacherRepository;
@@ -59,4 +60,22 @@ public class SubjectController {
         return subjectRepository.save(subject);
     }
 
+    @GetMapping("/getbyname/{subjectName}")
+    List<Subject> getsubject(@PathVariable String subjectName){
+        return subjectRepository.findByName(subjectName);
+    }
+
+    @GetMapping ("/less/{id}")
+    List<Subject> getSubjectsByIdLess (@PathVariable Long id){
+        return subjectRepository.findByEnrolledStudents_IdLessThan(id);
+    }
+    @GetMapping ("/name/{name}")
+    List<Subject> findByName (@PathVariable String name){
+        return subjectRepository.findByNameJPQL(name);
+    }
+
+    @GetMapping("/findById/{id}")
+    SubjectDto getSubjectById(@PathVariable Long id){
+        return subjectService.getSubjectByIdService(id);
+    }
 }
