@@ -53,6 +53,9 @@ public class StudentService {
         return studentRepository.existsByNameLike(name);
     }
 
+    List<Student> studentByNameJpqlService(String name){
+        return studentRepository.studentByNameJpql(name);
+    }
 
 
 

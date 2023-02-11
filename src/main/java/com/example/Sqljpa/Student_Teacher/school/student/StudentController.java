@@ -49,4 +49,11 @@ public class StudentController {
     boolean doesNameExistControler (@PathVariable String name){
         return studentService.doesNameExistService(name);
     }
+
+    @GetMapping("/getByJpql/{name}")
+    List<Student> studentByNameJpqlController(@PathVariable String name){
+        return studentService.studentByNameJpqlService(name);
+    }
+
 }
+
